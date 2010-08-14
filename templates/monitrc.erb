@@ -1,0 +1,15 @@
+set logfile syslog facility log_daemon    
+
+set daemon <%= options[:interval]  || '15' %>
+set statefile /var/.monit.state
+
+<% if options[:mailserver] %>
+set mailserver <%= options[:mailserver][:host] %> port <%= options[:mailserver][:port] || 25 %> with timeout 15 seconds
+set eventqueue basedir /var/monit slots 100
+
+<% options[:alerts][:emails].each do |email| %>
+set alert <%= email %>
+<% end %>
+<% end %>
+
+include /etc/monit/conf.d/*
