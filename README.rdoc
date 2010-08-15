@@ -21,14 +21,17 @@ for monit[http://mmonit.com/monit/].
 This plugin has two ways to send notifications
 
 * A mailserver:
+
   :monit:
     :mailserver:
       :host: prod-app1.foo.com
      :port: 25
      :emails:
        - your_email@foo.com
+       - your_other_email@foo.com
 
 * Or Prowl
+
   :prowl:
     :api_key: 1123hj12j4hg12jh4gj12h4gj1h2g4
     
