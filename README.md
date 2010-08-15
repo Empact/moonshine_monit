@@ -16,8 +16,8 @@ This would install "prod.erb" and "db1.erb" to prod-db1.foo.com  and "prod.erb" 
 
 Your moonshine config has a few options:
 
-  :monit:
-    :interval: 15  # the interval that monit checks things in seconds
+    :monit:
+      :interval: 15  # the interval that monit checks things in seconds
 
 This plugin has two ways to send notifications
 
@@ -31,10 +31,11 @@ A mailserver:
          - your_email@foo.com
          - your_other_email@foo.com
 
-Or Prowl
+Or Prowl:
 
-    :prowl:
-      :api_key: 1123hj12j4hg12jh4gj12h4gj1h2g4
+    :monit:
+      :prowl:
+        :api_key: 1123hj12j4hg12jh4gj12h4gj1h2g4
     
 
 * If you use prowl there's a helper method that you can use in your config.erb files:
