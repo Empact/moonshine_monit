@@ -53,7 +53,7 @@ If you use prowl there's a helper method that you can use in your config.erb fil
 Example config file
 -------------------
 
-Please note that this plugin helps you get monit running.  You're on your own writing monit config files.
+Please note that this plugin helps you get monit running.  You're on your own writing monit config files, but here's an example with the prowl helper mentioned above.
 
 Check out their documentation here: [Monit](http://mmonit.com/monit/documentation/)
 
