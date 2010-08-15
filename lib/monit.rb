@@ -19,14 +19,14 @@ module Monit
 
     file '/etc/monit/conf.d', :ensure => :directory
 
-    # get all files in config/moonshine/monit that match the current host name
+    # get all files in config/monit that match the current host name
     # drop them in /etc/monit/conf.d/ which is included by /etc/monit/monitrc
-    Dir.entries(File.join(rails_root, 'config', 'moonshine', 'monit')).map{|f| f.gsub('.erb', '')}.reject{|f| ['.', '..'].include?(f)}.select{|f| Facter.hostname.match(f)}.each do |filename|
+    Dir.entries(File.join(rails_root, 'config', 'monit')).map{|f| f.gsub('.erb', '')}.reject{|f| ['.', '..'].include?(f)}.select{|f| Facter.hostname.match(f)}.each do |filename|
       file "/etc/monit/conf.d/#{filename}.conf",
         :mode => '700',
         :require => file('/etc/monit/conf.d'),
         :backup => false,
-        :content => template(File.join(rails_root, 'config', 'moonshine', 'monit', "#{filename}.erb"), binding)
+        :content => template(File.join(rails_root, 'config', 'monit', "#{filename}.erb"), binding)
     end
 
     if options[:prowl]
