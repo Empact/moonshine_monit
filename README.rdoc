@@ -5,10 +5,6 @@
 Moonshine_Monit provides simple installation and configuration management
 for monit[http://mmonit.com/monit/].
 
-Available options:
-* <tt>log_level</tt> - One of debug, info, warn, error, or fatal. Default is 'warn'.
-* <tt>log_file</tt> - Path to log file. Default is /var/log/god.log.
-
 === Instructions
 
 * <tt>script/plugin install git://github.com/crankharder/moonshine_monit.git</tt>
@@ -19,18 +15,18 @@ Available options:
 
 * Your moonshine config has a few options:
 
-:monit:
-  :interval: 15  - the interval that monit checks things in seconds
+  :monit:
+    :interval: 15  # the interval that monit checks things in seconds
 
+This plugin has two ways to send notifications
 
-** This plugin has two ways to send notifications
 * A mailserver:
-:monit:
-  :mailserver:
-    :host: prod-app1.foo.com
-   :port: 25
-   :emails:
-     - your_email@foo.com
+  :monit:
+    :mailserver:
+      :host: prod-app1.foo.com
+     :port: 25
+     :emails:
+       - your_email@foo.com
 
 * Or Prowl
   :prowl:
@@ -44,7 +40,7 @@ Available options:
 
 === Example config file:
 ** Please note that this plugin helps you get monit running.  You're on your own writing monit config files.
-** Check out their documentation here: [http://mmonit.com/monit/documentation/]
+** Check out their documentation here: Monit[http://mmonit.com/monit/documentation/]
 
 set httpd port 2812 and
   use address 192.168.1.192
