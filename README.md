@@ -8,10 +8,14 @@ Moonshine_Monit provides simple installation and configuration management for [m
 Instructions
 ------------
 
-<tt>script/plugin install git://github.com/crankharder/moonshine_monit.git</tt>
+    script/plugin install git://github.com/crankharder/moonshine_monit.git
+
 Monit configuration files go in config/monit/*.erb
+
 The name of the configuration files are important.  They must match the host name of the server where you want them deployed.
+
 For example, if you have servers prod-db1.foo.com, prod-app1.foo.com, then you can name your config files "prod.erb", "app1.erb", "db1.erb"
+
 This would install "prod.erb" and "db1.erb" to prod-db1.foo.com  and "prod.erb" and "app1.erb" to "prod-app1.foo.com"
 
 Your moonshine config has a few options:
