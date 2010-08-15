@@ -52,7 +52,7 @@ Example config file
 
 Please note that this plugin helps you get monit running.  You're on your own writing monit config files.
 
-Check out their documentation here: Monit[http://mmonit.com/monit/documentation/]
+Check out their documentation here: [Monit](http://mmonit.com/monit/documentation/)
 
     set httpd port 2812 and
       use address 192.168.1.192
