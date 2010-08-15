@@ -56,7 +56,7 @@ Check out their documentation here: Monit[http://mmonit.com/monit/documentation/
 
     set httpd port 2812 and
       use address 192.168.1.192
-      allow 68.100.2.225
+      allow 123.456.789.123
       allow 192.168.1.100
       allow 127.0.0.1
 
