@@ -21,7 +21,9 @@ module Monit
 
     # get all files in config/monit that match the current host name
     # drop them in /etc/monit/conf.d/ which is included by /etc/monit/monitrc
+    filenames = []
     Dir.entries(File.join(rails_root, 'config', 'monit')).map{|f| f.gsub('.erb', '')}.reject{|f| ['.', '..'].include?(f)}.select{|f| Facter.hostname.match(f)}.each do |filename|
+      filenames << "#{filename}.conf"
       file "/etc/monit/conf.d/#{filename}.conf",
         :mode => '700',
         :require => file('/etc/monit/conf.d'),
@@ -29,8 +31,13 @@ module Monit
         :content => template(File.join(rails_root, 'config', 'monit', "#{filename}.erb"), binding)
     end
 
+    Dir.entries('/etc/monit/conf.d').reject{|f| (filenames + ['.', '..']).include?(f)}.each do |filename|
+      file "/etc/monit/conf.d/#{filename}", :ensure => :absent
+    end
+
     if options[:prowl]
       package 'curl', :ensure => :installed
+
       file PROWL_PATH,
         :mode => '744',
         :backup => false,
