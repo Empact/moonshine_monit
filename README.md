@@ -18,6 +18,9 @@ For example, if you have servers prod-db1.foo.com, prod-app1.foo.com, then you c
 
 This would install "prod.erb" and "db1.erb" to prod-db1.foo.com  and "prod.erb" and "app1.erb" to "prod-app1.foo.com"
 
+moonshine.yml
+-------------
+
 Your moonshine config has a few options:
 
     :monit:
