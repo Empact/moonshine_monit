@@ -8,33 +8,33 @@ Moonshine_Monit provides simple installation and configuration management for [m
 Instructions
 ------------
 
-* <tt>script/plugin install git://github.com/crankharder/moonshine_monit.git</tt>
-* Monit configuration files go in config/monit/*.erb
-** The name of the configuration files are important.  They must match the host name of the server where you want them deployed.
-** For example, if you have servers prod-db1.foo.com, prod-app1.foo.com, then you can name your config files "prod.erb", "app1.erb", "db1.erb"
-** This would install "prod.erb" and "db1.erb" to prod-db1.foo.com  and "prod.erb" and "app1.erb" to "prod-app1.foo.com"
+<tt>script/plugin install git://github.com/crankharder/moonshine_monit.git</tt>
+Monit configuration files go in config/monit/*.erb
+The name of the configuration files are important.  They must match the host name of the server where you want them deployed.
+For example, if you have servers prod-db1.foo.com, prod-app1.foo.com, then you can name your config files "prod.erb", "app1.erb", "db1.erb"
+This would install "prod.erb" and "db1.erb" to prod-db1.foo.com  and "prod.erb" and "app1.erb" to "prod-app1.foo.com"
 
-* Your moonshine config has a few options:
+Your moonshine config has a few options:
 
   :monit:
     :interval: 15  # the interval that monit checks things in seconds
 
 This plugin has two ways to send notifications
 
-* A mailserver:
+A mailserver:
 
-  :monit:
-    :mailserver:
-      :host: prod-app1.foo.com
-     :port: 25
-     :emails:
-       - your_email@foo.com
-       - your_other_email@foo.com
+    :monit:
+      :mailserver:
+        :host: prod-app1.foo.com
+       :port: 25
+       :emails:
+         - your_email@foo.com
+         - your_other_email@foo.com
 
-* Or Prowl
+Or Prowl
 
-  :prowl:
-    :api_key: 1123hj12j4hg12jh4gj12h4gj1h2g4
+    :prowl:
+      :api_key: 1123hj12j4hg12jh4gj12h4gj1h2g4
     
 
 * If you use prowl there's a helper method that you can use in your config.erb files:
