@@ -1,7 +1,7 @@
 Moonshine_Monit
 ===============
 
-A plugin for [Moonshine](http://github.com/railsmachine/moonshine_
+A plugin for [Moonshine](http://github.com/railsmachine/moonshine)
 
 Moonshine_Monit provides simple installation and configuration management for [monit](http://mmonit.com/monit/).
 
