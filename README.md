@@ -42,22 +42,24 @@ Or Prowl:
         :api_key: 1123hj12j4hg12jh4gj12h4gj1h2g4
     
 
-* If you use prowl there's a helper method that you can use in your config.erb files:
+If you use prowl there's a helper method that you can use in your config.erb files:
 
-<%= prowl("your message here", priority) %> -- where priority is one of -2,-1,0,1,2    
+    <%= prowl("your message here", priority) %> -- where priority is one of -2,-1,0,1,2    
 
 
-=== Example config file:
-** Please note that this plugin helps you get monit running.  You're on your own writing monit config files.
-** Check out their documentation here: Monit[http://mmonit.com/monit/documentation/]
+Example config file
+-------------------
 
-set httpd port 2812 and
-  use address 192.168.1.192
-  allow 68.100.2.225
-  allow 192.168.1.100
-  allow 127.0.0.1
+Please note that this plugin helps you get monit running.  You're on your own writing monit config files.
 
-check host stg-app1 with address 192.168.1.191
-  if failed port 80 with timeout 15 seconds then <%= prowl("http down on stg-app1") %>
-  if failed port 443 with timeout 15 seconds then <%= prowl("https down on stg-app1") %>
+Check out their documentation here: Monit[http://mmonit.com/monit/documentation/]
 
+    set httpd port 2812 and
+      use address 192.168.1.192
+      allow 68.100.2.225
+      allow 192.168.1.100
+      allow 127.0.0.1
+
+    check host stg-app1 with address 192.168.1.191
+      if failed port 80 with timeout 15 seconds then <%= prowl("http down on stg-app1") %>
+      if failed port 443 with timeout 15 seconds then <%= prowl("https down on stg-app1") %>
