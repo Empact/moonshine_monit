@@ -17,6 +17,20 @@ module Monit
       :backup => false,
       :content => template("#{File.dirname(__FILE__)}/../templates/monit.conf.erb", binding)
 
+    file '/etc/default/monit',
+          :content => template(File.join(File.dirname(__FILE__), '..', 'templates', 'startup')),
+          :mode => '644',
+          :before => service("monit")
+
+    file '/etc/init.d/monit',
+      :mode => '755',
+      :before => service("monit")
+
+    exec 'restart_monit',
+      :command => 'monit reload',
+      :require => file('/etc/init.d/monit'),
+      :refreshonly => true
+
     file '/etc/monit/conf.d', :ensure => :directory
 
     # get all files in config/monit that match the current host name
@@ -45,6 +59,11 @@ module Monit
         :backup => false,
         :content => template("#{File.dirname(__FILE__)}/../templates/prowl.sh.erb", binding)
     end
+
+    service 'monit',
+      :require => package('monit'),
+      :enable => true,
+      :ensure => :running
   end
 
 private
