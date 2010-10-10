@@ -31,8 +31,10 @@ module Monit
         :content => template(File.join(rails_root, 'config', 'monit', "#{filename}.erb"), binding)
     end
 
-    Dir.entries('/etc/monit/conf.d').reject{|f| (filenames + ['.', '..']).include?(f)}.each do |filename|
-      file "/etc/monit/conf.d/#{filename}", :ensure => :absent
+    if File.exists?('/etc/monit/conf.d')
+      Dir.entries('/etc/monit/conf.d').reject{|f| (filenames + ['.', '..']).include?(f)}.each do |filename|
+        file "/etc/monit/conf.d/#{filename}", :ensure => :absent
+      end
     end
 
     if options[:prowl]
