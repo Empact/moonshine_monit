@@ -17,11 +17,6 @@ module Monit
       :backup => false,
       :content => template("#{File.dirname(__FILE__)}/../templates/monit.conf.erb", binding)
 
-    file '/etc/default/monit',
-          :content => template(File.join(File.dirname(__FILE__), '..', 'templates', 'startup')),
-          :mode => '644',
-          :before => service("monit")
-
     file '/etc/init.d/monit',
       :mode => '755',
       :before => service("monit")
